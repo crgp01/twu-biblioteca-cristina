@@ -36,6 +36,16 @@ public class Biblioteca {
         return checkedBooks;
     }
 
+    public ArrayList<String> getListBookDetails() {
+        ArrayList<String> booksDeytails = new ArrayList<String>();
+
+        for (Book book : _books)
+        {
+            booksDeytails.add(book.getBookDetails());
+        }
+
+        return booksDeytails;
+    }
 
     public ArrayList<Book> getListCheckedBook() {
         ArrayList<Book> checkedBooks = new ArrayList<Book>();

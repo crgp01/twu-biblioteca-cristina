@@ -12,6 +12,7 @@ public class Message {
     public static String UNSUCCESSFUL_BOOK_CHECKOUT = "That book is not available";
     public static String SUCCESSFUL_RETURN = "Thank you for returning the book";
     public static String UNSUCCESSFUL_RETURN = "That is not a valid book to return";
+    public static String MENU_RETURN = "Press 9 to return to menu";
 
 
 }
