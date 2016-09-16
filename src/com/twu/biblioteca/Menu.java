@@ -55,18 +55,33 @@ public class Menu {
 
             case "2":
 
-                System.out.print("Title :\n ");
+                //System.out.print("Title :\n ");
                 String bookTitle = scanner.nextLine();
                 _biblioteca.checkoutBook(bookTitle);
 
+                if ( _biblioteca.checkoutBook(bookTitle))
+                {
+                    message = Message.CHECKOUT_BOOK;
+                }
+                else
+                {
+                    message = Message.UNSUCCESSFUL_BOOK_CHECKOUT;
+                }
+
+
+                message += "\n\n"+Message.MENU_RETURN;
                 break;
 
             case "3":
 
-                System.out.print("Title :\n ");
+               // System.out.print("Title :\n ");
                 bookTitle = scanner.nextLine();
                 _biblioteca.returnBook(bookTitle,"1");
-
+                if(_biblioteca.returnBook(bookTitle,"1"))
+                {
+                    message = Message.SUCCESSFUL_RETURN;
+                }
+                else{message = Message.UNSUCCESSFUL_RETURN;}
 
                 message += "\n\n"+Message.MENU_RETURN;
                 break;
@@ -77,14 +92,15 @@ public class Menu {
                 message += "\n\n"+Message.QUIT;
                 System.exit(1);
                 break;
+
             case "9":
 
                 System.out.flush();
                 printMenu();
 
             default:
-             /* message = Message.INVALID_OPTION;
-                message += "\n\n"+Message.MENU_RETURN;*/
+              message = Message.INVALID_OPTION;
+
                 break;
         }
 

@@ -25,17 +25,6 @@ public class Book {
         return isCheckedOut;
     }
 
-    public Book() {
-    }
-
-    public Book(String title, int year, String author, boolean isCheckedOut, String libraryNumber) {
-        this.title = title;
-        this.year = year;
-        this.author = author;
-        this.isCheckedOut = isCheckedOut;
-        this.libraryNumber = libraryNumber;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -46,6 +35,16 @@ public class Book {
 
     public String getAuthor() {
         return author;
+    }
+    public Book() {
+    }
+
+    public Book(String title, int year, String author, boolean isCheckedOut, String libraryNumber) {
+        this.title = title;
+        this.year = year;
+        this.author = author;
+        this.isCheckedOut = isCheckedOut;
+        this.libraryNumber = libraryNumber;
     }
 
     public String getBookDetails() {

@@ -86,21 +86,21 @@ public class Biblioteca {
         return position;
     }
 
-    public String checkoutBook(String bookTitle) {
+    public boolean checkoutBook(String bookTitle) {
         ArrayList<Book> availableBooks = getListBook();
         int position = findBooksByTitle(bookTitle, availableBooks);
 
         if (position >= 0) {
 
             availableBooks.get(position).setCheckedOut(true);
-            return Message.CHECKOUT_BOOK;
+            return true;
         }
         else {
-            return Message.UNSUCCESSFUL_BOOK_CHECKOUT;
+            return false;
         }
     }
 
-    public String returnBook(String bookTitle, String libraryNumber) {
+    public boolean returnBook(String bookTitle, String libraryNumber) {
         ArrayList<Book> checkOutBooks = getListCheckedBook();
 
         int position = findBooksByTitle(bookTitle, checkOutBooks);
@@ -110,15 +110,15 @@ public class Biblioteca {
 
             if(libraryNumber.equals(checkOutBooks.get(position).getLibraryNumber())) {
                 checkOutBooks.get(position).setCheckedOut(false);
-                return Message.SUCCESSFUL_RETURN;
+                return true;
             }
             else
             {
-                return Message.UNSUCCESSFUL_RETURN;
+                return false;
             }
         }
         else {
-            return Message.UNSUCCESSFUL_RETURN;
+            return false;
         }
     }
 

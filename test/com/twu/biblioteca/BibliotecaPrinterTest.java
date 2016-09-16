@@ -31,11 +31,11 @@ public class BibliotecaPrinterTest {
 
 public void bookDetailsTest() {
 
-    Book book = new Book("title",2000,"author",false,"1");
+    Book book = new Book("It",1987,"Stephen King",false,"1");
 
     String bookDetails = book.getBookDetails();
 
-    assertEquals("title author 2000", bookDetails);
+    assertEquals("It                   | Stephen King         | 1987", bookDetails);
 }
 
     @Test
@@ -55,7 +55,7 @@ public void bookDetailsTest() {
 
         Menu menu = new Menu();
 
-        String wrongMessage = menu.menuOptions("32");
+        String wrongMessage = menu.menuOptions("33");
 
         assertEquals("Invalid Option!",wrongMessage);
     }
@@ -67,6 +67,7 @@ public void bookDetailsTest() {
         Menu menu = new Menu();
 
         String quitMessage = menu.menuOptions("0");
+        System.out.println(quitMessage);
 
         assertEquals("Bye Bye!",quitMessage);
     }
@@ -117,22 +118,22 @@ public void bookDetailsTest() {
         String bookTitle = "It";
         biblioteca.addBooks();
 
-        String message = biblioteca.checkoutBook(bookTitle);
+        boolean isCheckOut = biblioteca.checkoutBook(bookTitle);
 
-        assertEquals("Thank you! Enjoy the book", message);
+        assertEquals(true, isCheckOut);
 
 
     }
 
     @Test
-    public void notcheckOutBook() {
+    public void notCheckOutBook() {
 
         String bookTitle = "hgh";
         biblioteca.addBooks();
 
-        String message = biblioteca.checkoutBook(bookTitle);
+        boolean isNotCheckOut = biblioteca.checkoutBook(bookTitle);
 
-        assertEquals("That book is not available", message);
+        assertEquals(false, isNotCheckOut);
 
 
     }
@@ -140,13 +141,13 @@ public void bookDetailsTest() {
     @Test
     public void returnBook() {
 
-        String bookTitle = "Patito lee";
+        String bookTitle = "Perfume";
         String libraryNumber = "1";
         biblioteca.addBooks();
 
-        String message = biblioteca.returnBook(bookTitle,libraryNumber);
+        boolean isReturned = biblioteca.returnBook(bookTitle,libraryNumber);
 
-        assertEquals("Thank you for returning the book", message);
+        assertEquals(true, isReturned);
 
 
     }
@@ -158,12 +159,13 @@ public void bookDetailsTest() {
         String libraryNumber = "2";
         biblioteca.addBooks();
 
-        String message = biblioteca.returnBook(bookTitle,libraryNumber);
+        boolean isNotReturned = biblioteca.returnBook(bookTitle,libraryNumber);
 
-        assertEquals("That is not a valid book to return", message);
+        assertEquals(false, isNotReturned);
 
 
     }
+
 
 
 
