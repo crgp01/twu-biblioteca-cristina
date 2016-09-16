@@ -4,6 +4,7 @@ import sun.tools.jconsole.Messages;
 import java.util.Scanner;
 
 import java.util.ArrayList;
+import java.io.Console;
 
 /**
  * Created by crivera on 14/9/16.
@@ -19,17 +20,31 @@ public class Menu {
             "3 - Return Book\n" +
             "0 - Quit\n" +
             "";
+    Scanner scanner = new Scanner(System.in);
+    String bookTitle = "";
+    String libraryNumber = "";
 
     public Menu() {
         _biblioteca.addBooks();
     }
 
+    public String readInputInformation(String message){
+        Scanner text = new Scanner(System.in);
+        System.out.println(message);
+        String itemInformation = text.nextLine();
+        return itemInformation;
+    }
+
+
+
     public String menuOptions(int option) {
         String message = "";
+        String libraryNUmber ="";
 
         switch (option) {
 
             case 1:
+
                 ArrayList<String> listBookdetails = _biblioteca.getListBookDetails();
                 for(String detail:listBookdetails)
                 {
@@ -39,11 +54,33 @@ public class Menu {
                 break;
 
             case 2:
+
+                System.out.print("Title :\n ");
+                String bookTitle = scanner.nextLine();
+                _biblioteca.checkoutBook(bookTitle);
+
+                break;
+
+
+
+
+            case 3:
+
+                System.out.print("Title :\n ");
+                bookTitle = scanner.nextLine();
+                /*System.out.print("Library Number : ");
+                libraryNUmber = scanner.nextLine();*/
+                _biblioteca.returnBook(bookTitle,"1");
+
+
                 message += "\n\n"+Message.MENU_RETURN;
                 break;
-            case 3:
-                message += Message.QUIT;
-                message += "\n\n"+Message.MENU_RETURN;
+
+
+            case 0:
+
+                message += "\n\n"+Message.QUIT;
+                System.exit(1);
                 break;
 
             default:
@@ -70,17 +107,14 @@ public class Menu {
                 if(option == 9)
                 {
                     System.out.flush();
-                    //Runtime.getRuntime().exec("cls");
                     printMenu();
                 }
                 else {
                     System.out.flush();
-                    //Runtime.getRuntime().exec("cls");
                     System.out.println(menuOptions(option));
                 }
             }catch (Exception e){
                 System.out.println(e);
-                //System.out.println(Message.INVALID_OPTION);
                 init();
             }
 

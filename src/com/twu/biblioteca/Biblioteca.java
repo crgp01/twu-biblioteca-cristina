@@ -15,7 +15,7 @@ public class Biblioteca {
         _books = new ArrayList<Book>() {{
             add(new Book("Metamorfosis",1960 ,"Franz Kafka", false,"1"));
             add(new Book("It",1987 ,"Stephen King", false, "1"));
-            add(new Book("Patito lee",1960 ,"Varios", true, "1"));
+            add(new Book("Perfume",1960 ,"Varios", true, "1"));
 
         }};
 
@@ -35,16 +35,30 @@ public class Biblioteca {
         }
         return checkedBooks;
     }
-
+//aqui
     public ArrayList<String> getListBookDetails() {
-        ArrayList<String> booksDeytails = new ArrayList<String>();
+        ArrayList<String> booksDetails = new ArrayList<String>();
 
-        for (Book book : _books)
+        ArrayList<Book> availableBook = getListBook();
+
+        for (Book book : availableBook)
         {
-            booksDeytails.add(book.getBookDetails());
+            booksDetails.add(book.getBookDetails());
         }
 
-        return booksDeytails;
+        return booksDetails;
+    }
+
+    public ArrayList<String> getListCheckedBookDetails() {
+        ArrayList<String> booksDetails = new ArrayList<String>();
+        ArrayList<Book> checkedBook = getListBook();
+
+        for (Book book : checkedBook)
+        {
+            booksDetails.add(book.getBookDetails());
+        }
+
+        return booksDetails;
     }
 
     public ArrayList<Book> getListCheckedBook() {

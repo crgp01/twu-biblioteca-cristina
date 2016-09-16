@@ -8,12 +8,13 @@ public class Book {
     private String title;
     private int year;
     private String author;
+    private String libraryNumber;
 
     public String getLibraryNumber() {
         return libraryNumber;
     }
 
-    private String libraryNumber;
+
     private boolean isCheckedOut = false;
 
     public void setCheckedOut(boolean checkedOut) {
@@ -48,6 +49,14 @@ public class Book {
     }
 
     public String getBookDetails() {
-        return this.getTitle()+" "+this.getAuthor()+" "+this.getYear();
+        String whitespaceTitle = String.format("%-20s", title);
+        String whitespaceAuthor = String.format("%-20s", author);
+
+        return String.format("%s | %s | %s\n",
+                whitespaceTitle,
+                whitespaceAuthor,
+                year);
     }
+
+
 }

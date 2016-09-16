@@ -84,7 +84,7 @@ public void bookDetailsTest() {
 
     @Test
 
-    public void booksCheckout() {
+    public void booksCheckedOut() {
 
         biblioteca.addBooks();
 
