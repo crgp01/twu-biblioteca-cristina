@@ -37,13 +37,13 @@ public class Menu {
 
 
 
-    public String menuOptions(int option) {
+    public String menuOptions(String option) {
         String message = "";
         String libraryNUmber ="";
 
         switch (option) {
 
-            case 1:
+            case "1":
 
                 ArrayList<String> listBookdetails = _biblioteca.getListBookDetails();
                 for(String detail:listBookdetails)
@@ -53,7 +53,7 @@ public class Menu {
                 message += "\n\n"+Message.MENU_RETURN;
                 break;
 
-            case 2:
+            case "2":
 
                 System.out.print("Title :\n ");
                 String bookTitle = scanner.nextLine();
@@ -61,15 +61,10 @@ public class Menu {
 
                 break;
 
-
-
-
-            case 3:
+            case "3":
 
                 System.out.print("Title :\n ");
                 bookTitle = scanner.nextLine();
-                /*System.out.print("Library Number : ");
-                libraryNUmber = scanner.nextLine();*/
                 _biblioteca.returnBook(bookTitle,"1");
 
 
@@ -77,15 +72,19 @@ public class Menu {
                 break;
 
 
-            case 0:
+            case "0":
 
                 message += "\n\n"+Message.QUIT;
                 System.exit(1);
                 break;
+            case "9":
+
+                System.out.flush();
+                printMenu();
 
             default:
-              message = Message.INVALID_OPTION;
-                message += "\n\n"+Message.MENU_RETURN;
+             /* message = Message.INVALID_OPTION;
+                message += "\n\n"+Message.MENU_RETURN;*/
                 break;
         }
 
@@ -98,13 +97,13 @@ public class Menu {
 
     public void init(){
         Scanner in = new Scanner(System.in);
-        int option = 0;
+        String option = "";
         printMenu();
 
         while (true){
             try {
-                option = in.nextInt();
-                if(option == 9)
+                option = in.nextLine();
+                if(option.equals("9"))
                 {
                     System.out.flush();
                     printMenu();

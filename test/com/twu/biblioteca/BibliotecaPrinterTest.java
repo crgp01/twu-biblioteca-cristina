@@ -55,7 +55,7 @@ public void bookDetailsTest() {
 
         Menu menu = new Menu();
 
-        String wrongMessage = menu.menuOptions(32);
+        String wrongMessage = menu.menuOptions("32");
 
         assertEquals("Invalid Option!",wrongMessage);
     }
@@ -66,7 +66,7 @@ public void bookDetailsTest() {
 
         Menu menu = new Menu();
 
-        String quitMessage = menu.menuOptions(0);
+        String quitMessage = menu.menuOptions("0");
 
         assertEquals("Bye Bye!",quitMessage);
     }
