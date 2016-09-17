@@ -35,7 +35,12 @@ public void bookDetailsTest() {
 
     String bookDetails = book.getBookDetails();
 
-    assertEquals("It                   | Stephen King         | 1987", bookDetails);
+    String whitespaceTitle = String.format("%-20s", "It");
+    String whitespaceAuthor = String.format("%-20s", "Stephen King");
+
+    String expected = String.format("%s | %s | %s\n",whitespaceTitle, whitespaceAuthor, 1987);
+
+    assertEquals(expected, bookDetails);
 }
 
     @Test

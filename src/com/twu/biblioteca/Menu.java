@@ -57,7 +57,9 @@ public class Menu {
 
                 //System.out.print("Title :\n ");
                 String bookTitle = scanner.nextLine();
-                _biblioteca.checkoutBook(bookTitle);
+                //_biblioteca.checkoutBook(bookTitle);
+
+
 
                 if ( _biblioteca.checkoutBook(bookTitle))
                 {
@@ -76,7 +78,7 @@ public class Menu {
 
                // System.out.print("Title :\n ");
                 bookTitle = scanner.nextLine();
-                _biblioteca.returnBook(bookTitle,"1");
+                //biblioteca.returnBook(bookTitle,"1");
                 if(_biblioteca.returnBook(bookTitle,"1"))
                 {
                     message = Message.SUCCESSFUL_RETURN;
@@ -90,7 +92,6 @@ public class Menu {
             case "0":
 
                 message += "\n\n"+Message.QUIT;
-                System.exit(1);
                 break;
 
             case "9":
@@ -127,6 +128,10 @@ public class Menu {
                 else {
                     System.out.flush();
                     System.out.println(menuOptions(option));
+                    if(option.equals("0"))
+                    {
+                        System.exit(1);
+                    }
                 }
             }catch (Exception e){
                 System.out.println(e);
