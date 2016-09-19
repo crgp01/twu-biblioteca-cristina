@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 /**
  * Created by crivera on 13/9/16.
  */
-public class BibliotecaPrinterTest {
+public class BibliotecaTest {
 
     public Biblioteca biblioteca = new Biblioteca();
     public BibliotecaApp bibliotecaApp = new BibliotecaApp();
