@@ -1,8 +1,8 @@
 package com.twu.biblioteca;
 import java.util.ArrayList;
 
+import org.junit.Ignore;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 /**
@@ -11,12 +11,13 @@ import static org.junit.Assert.*;
 public class BibliotecaPrinterTest {
 
     public Biblioteca biblioteca = new Biblioteca();
-
+    public BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
     @Test
     public void printWelcomeMessage() {
 
-        assertEquals(Message.WELCOME, "Welcome!");
+        String welcomeMessage = bibliotecaApp.welcomeMessage();
+        assertEquals(Message.WELCOME, welcomeMessage);
     }
 
     @Test
@@ -60,10 +61,10 @@ public void bookDetailsTest() {
 
         String wrongMessage = menu.menuOptions("33");
 
-        assertEquals("Invalid Option!",wrongMessage);
+        assertEquals(Message.INVALID_OPTION,wrongMessage);
     }
 
-    @Test
+    @Ignore
     public void exitMessageMenuOptions() {
 
         Menu menu = new Menu();
@@ -71,7 +72,7 @@ public void bookDetailsTest() {
         String quitMessage = menu.menuOptions("0");
         System.out.println(quitMessage);
 
-        assertEquals("Bye Bye!",quitMessage);
+        assertEquals(Message.QUIT,quitMessage);
     }
 
     @Test
@@ -99,7 +100,7 @@ public void bookDetailsTest() {
     @Test
     public void printSuccessMessage() {
 
-        assertEquals(Message.CHECKOUT_BOOK, "Thank you! Enjoy the book");
+        assertEquals("Thank you! Enjoy the book",Message.CHECKOUT_BOOK);
     }
     @Test
     public void findAvailableBook() {

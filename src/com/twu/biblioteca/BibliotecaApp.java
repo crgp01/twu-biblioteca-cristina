@@ -5,14 +5,18 @@ package com.twu.biblioteca;
  */
 public class BibliotecaApp {
 
-    public static void welcomeMessage(){
-        System.out.println(Message.WELCOME);
+    public static String welcomeMessage(){
+        return (Message.WELCOME);
+    }
+
+    public void printWelcomeMessage(){
+        System.out.println(welcomeMessage());
     }
 
     public static void main(String[] args) {
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.welcomeMessage();
+        bibliotecaApp.printWelcomeMessage();
         bibliotecaApp.initMenu();
 
     }
@@ -21,4 +25,6 @@ public class BibliotecaApp {
         Menu menu = new Menu();
         menu.init();
     }
+
+
 }

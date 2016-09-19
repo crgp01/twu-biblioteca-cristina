@@ -76,6 +76,7 @@ public class Menu {
             case "9":
 
                 printMenu();
+                break;
 
             default:
               message = Message.INVALID_OPTION;
