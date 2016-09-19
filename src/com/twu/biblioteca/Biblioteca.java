@@ -35,7 +35,21 @@ public class Biblioteca {
         }
         return checkedBooks;
     }
+
+    public ArrayList<Book> getListCheckedBook() {
+        ArrayList<Book> checkedBooks = new ArrayList<Book>();
+
+        for (Book book : _books) {
+            if (book.isCheckedOut()) {
+                checkedBooks.add(book);
+            }
+        }
+
+        return checkedBooks;
+    }
+
 //aqui
+
     public ArrayList<String> getListBookDetails() {
         ArrayList<String> booksDetails = new ArrayList<String>();
 
@@ -49,29 +63,9 @@ public class Biblioteca {
         return booksDetails;
     }
 
-    public ArrayList<String> getListCheckedBookDetails() {
-        ArrayList<String> booksDetails = new ArrayList<String>();
-        ArrayList<Book> checkedBook = getListBook();
 
-        for (Book book : checkedBook)
-        {
-            booksDetails.add(book.getBookDetails());
-        }
 
-        return booksDetails;
-    }
 
-    public ArrayList<Book> getListCheckedBook() {
-        ArrayList<Book> checkedBooks = new ArrayList<Book>();
-
-        for (Book book : _books) {
-            if (book.isCheckedOut()) {
-                checkedBooks.add(book);
-            }
-        }
-
-        return checkedBooks;
-    }
     public int findBooksByTitle(String bookTitle, ArrayList<Book> books){
         int i = 0;
         int position = -1;

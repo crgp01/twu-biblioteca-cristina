@@ -55,9 +55,7 @@ public class Menu {
 
             case "2":
 
-                //System.out.print("Title :\n ");
                 String bookTitle = scanner.nextLine();
-                //_biblioteca.checkoutBook(bookTitle);
 
 
 
@@ -76,9 +74,7 @@ public class Menu {
 
             case "3":
 
-               // System.out.print("Title :\n ");
                 bookTitle = scanner.nextLine();
-                //biblioteca.returnBook(bookTitle,"1");
                 if(_biblioteca.returnBook(bookTitle,"1"))
                 {
                     message = Message.SUCCESSFUL_RETURN;
@@ -96,7 +92,6 @@ public class Menu {
 
             case "9":
 
-                System.out.flush();
                 printMenu();
 
             default:
@@ -126,7 +121,6 @@ public class Menu {
                     printMenu();
                 }
                 else {
-                    System.out.flush();
                     System.out.println(menuOptions(option));
                     if(option.equals("0"))
                     {

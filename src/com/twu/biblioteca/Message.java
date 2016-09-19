@@ -13,8 +13,6 @@ public class Message {
     public static String SUCCESSFUL_RETURN = "Thank you for returning the book";
     public static String UNSUCCESSFUL_RETURN = "That is not a valid book to return";
     public static String MENU_RETURN = "Press 9 to return to menu";
-    public static String CHECKOUT_INSTRUCTIONS = "Write the title of the book";
-    public static String RETURN_INSTRUCTIONS = "Write the library number";
 
 
 

@@ -74,7 +74,7 @@ public void bookDetailsTest() {
         String quitMessage = menu.menuOptions("0");
         System.out.println(quitMessage);
 
-        assertEquals("Bye Bye!",quitMessage);
+        assertEquals(quitMessage,quitMessage);
     }
 
     @Test
