@@ -22,9 +22,9 @@ public class BibliotecaPrinterTest {
     @Test
     public void booklistTest() {
 
-        ArrayList<Book> bookList = biblioteca.getListBook();
+        ArrayList<Book> bookList = biblioteca.getListBook(false);
 
-        assertEquals(biblioteca.getListBook(),bookList);
+        assertEquals(biblioteca.getListBook(false),bookList);
     }
 
 @Test
@@ -44,7 +44,6 @@ public void bookDetailsTest() {
 }
 
     @Test
-
     public void returnMenuOptions() {
 
         Menu menu = new Menu();
@@ -55,7 +54,6 @@ public void bookDetailsTest() {
     }
 
     @Test
-
     public void wrongMessageMenuOptions() {
 
         Menu menu = new Menu();
@@ -66,7 +64,6 @@ public void bookDetailsTest() {
     }
 
     @Test
-
     public void exitMessageMenuOptions() {
 
         Menu menu = new Menu();
@@ -74,18 +71,18 @@ public void bookDetailsTest() {
         String quitMessage = menu.menuOptions("0");
         System.out.println(quitMessage);
 
-        assertEquals(quitMessage,quitMessage);
+        assertEquals("Bye Bye!",quitMessage);
     }
 
     @Test
 
-    public void booksAvaibleCheckout() {
+    public void booksAvailableCheckout() {
 
         biblioteca.addBooks();
 
-        ArrayList<Book> bookList = biblioteca.getListBook();
+        ArrayList<Book> bookList = biblioteca.getListBook(false);
 
-        assertEquals(biblioteca.getListBook(),bookList);
+        assertEquals(biblioteca.getListBook(false),bookList);
     }
 
     @Test
@@ -94,9 +91,9 @@ public void bookDetailsTest() {
 
         biblioteca.addBooks();
 
-        ArrayList<Book> bookList = biblioteca.getListCheckedBook();
+        ArrayList<Book> bookList = biblioteca.getListBook(true);
 
-        assertEquals(biblioteca.getListCheckedBook(),bookList);
+        assertEquals(biblioteca.getListBook(true),bookList);
     }
 
     @Test
@@ -109,7 +106,7 @@ public void bookDetailsTest() {
         biblioteca.addBooks();
         int position = 0;
         String bookTitle = "It";
-        ArrayList<Book> bookList = biblioteca.getListBook();
+        ArrayList<Book> bookList = biblioteca.getListBook(false);
         position = biblioteca.findBooksByTitle(bookTitle,bookList);
 
         assertEquals(1,position);
@@ -126,8 +123,6 @@ public void bookDetailsTest() {
         boolean isCheckOut = biblioteca.checkoutBook(bookTitle);
 
         assertEquals(true, isCheckOut);
-
-
     }
 
     @Test
@@ -139,8 +134,6 @@ public void bookDetailsTest() {
         boolean isNotCheckOut = biblioteca.checkoutBook(bookTitle);
 
         assertEquals(false, isNotCheckOut);
-
-
     }
 
     @Test
@@ -154,13 +147,12 @@ public void bookDetailsTest() {
 
         assertEquals(true, isReturned);
 
-
     }
 
     @Test
     public void returnInvalidBook() {
 
-        String bookTitle = "Patito lee";
+        String bookTitle = "Other book";
         String libraryNumber = "2";
         biblioteca.addBooks();
 

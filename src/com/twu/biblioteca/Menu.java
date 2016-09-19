@@ -1,10 +1,7 @@
 package com.twu.biblioteca;
-
-import sun.tools.jconsole.Messages;
 import java.util.Scanner;
-
 import java.util.ArrayList;
-import java.io.Console;
+
 
 /**
  * Created by crivera on 14/9/16.
@@ -21,25 +18,13 @@ public class Menu {
             "0 - Quit\n" +
             "";
     Scanner scanner = new Scanner(System.in);
-    String bookTitle = "";
-    String libraryNumber = "";
 
     public Menu() {
         _biblioteca.addBooks();
     }
 
-    public String readInputInformation(String message){
-        Scanner text = new Scanner(System.in);
-        System.out.println(message);
-        String itemInformation = text.nextLine();
-        return itemInformation;
-    }
-
-
-
     public String menuOptions(String option) {
         String message = "";
-        String libraryNUmber ="";
 
         switch (option) {
 
@@ -56,8 +41,6 @@ public class Menu {
             case "2":
 
                 String bookTitle = scanner.nextLine();
-
-
 
                 if ( _biblioteca.checkoutBook(bookTitle))
                 {

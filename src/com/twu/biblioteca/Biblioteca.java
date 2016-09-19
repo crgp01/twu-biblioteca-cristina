@@ -7,9 +7,7 @@ import java.util.ArrayList;
  */
 public class Biblioteca {
 
-
     private ArrayList<Book> _books = new ArrayList<Book>();
-
 
     public void addBooks () {
         _books = new ArrayList<Book>() {{
@@ -18,42 +16,25 @@ public class Biblioteca {
             add(new Book("Perfume",1960 ,"Varios", true, "1"));
 
         }};
-
     }
 
-    public void welcomeMessage() {
-        System.out.println(Message.WELCOME);
-    }
-
-    public ArrayList<Book> getListBook() {
-        ArrayList<Book> checkedBooks = new ArrayList<Book>();
+    public ArrayList<Book> getListBook(boolean condition) {
+       ArrayList<Book> bookList = new ArrayList<Book>();
 
         for (Book book : _books) {
-            if (book.isCheckedOut() == false) {
-                checkedBooks.add(book);
+            if (book.isCheckedOut() == condition) {
+                bookList.add(book);
+
             }
         }
-        return checkedBooks;
+        return bookList;
     }
 
-    public ArrayList<Book> getListCheckedBook() {
-        ArrayList<Book> checkedBooks = new ArrayList<Book>();
-
-        for (Book book : _books) {
-            if (book.isCheckedOut()) {
-                checkedBooks.add(book);
-            }
-        }
-
-        return checkedBooks;
-    }
-
-//aqui
 
     public ArrayList<String> getListBookDetails() {
         ArrayList<String> booksDetails = new ArrayList<String>();
 
-        ArrayList<Book> availableBook = getListBook();
+        ArrayList<Book> availableBook = getListBook(false);
 
         for (Book book : availableBook)
         {
@@ -62,8 +43,6 @@ public class Biblioteca {
 
         return booksDetails;
     }
-
-
 
 
     public int findBooksByTitle(String bookTitle, ArrayList<Book> books){
@@ -77,11 +56,13 @@ public class Biblioteca {
             }
             i++;
         }
+
         return position;
+
     }
 
     public boolean checkoutBook(String bookTitle) {
-        ArrayList<Book> availableBooks = getListBook();
+        ArrayList<Book> availableBooks = getListBook(false);
         int position = findBooksByTitle(bookTitle, availableBooks);
 
         if (position >= 0) {
@@ -95,10 +76,9 @@ public class Biblioteca {
     }
 
     public boolean returnBook(String bookTitle, String libraryNumber) {
-        ArrayList<Book> checkOutBooks = getListCheckedBook();
+        ArrayList<Book> checkOutBooks = getListBook(true);
 
         int position = findBooksByTitle(bookTitle, checkOutBooks);
-
 
         if (position >= 0) {
 

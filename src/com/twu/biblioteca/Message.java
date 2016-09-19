@@ -5,7 +5,7 @@ package com.twu.biblioteca;
  */
 public class Message {
 
-    public static String WELCOME = "Welcome!";
+    public static String WELCOME = "Welcome!\n";
     public static String INVALID_OPTION = "Invalid Option!";
     public static String QUIT = "Bye Bye!";
     public static String CHECKOUT_BOOK = "Thank you! Enjoy the book";

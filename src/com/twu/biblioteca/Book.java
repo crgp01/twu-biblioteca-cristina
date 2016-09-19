@@ -29,15 +29,6 @@ public class Book {
         return title;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-    public Book() {
-    }
 
     public Book(String title, int year, String author, boolean isCheckedOut, String libraryNumber) {
         this.title = title;
