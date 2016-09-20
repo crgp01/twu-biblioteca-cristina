@@ -4,7 +4,10 @@
 *.war
 *.ear
 *.idea
+*.iml
 
 #Directories
 /out
+out/
+out/production/com/twu/biblioteca
 TWU_Biblioteca-master/
