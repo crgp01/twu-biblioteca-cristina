@@ -2,25 +2,21 @@ package com.twu.biblioteca;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-
-/**
- * Created by crivera on 14/9/16.
- */
 public class Menu {
 
-    Biblioteca _biblioteca = new Biblioteca();
+    Biblioteca biblioteca = new Biblioteca();
 
 
-    public static String MenuOptions = "Choose an option:\n" +
+    public String MenuOptions = "Choose an option:\n" +
             "1 - Books List\n" +
             "2 - Checkout Book\n" +
             "3 - Return Book\n" +
             "0 - Quit\n" +
             "";
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public Menu() {
-        _biblioteca.addBooks();
+        biblioteca.Biblioteca();
     }
 
     public String menuOptions(String option) {
@@ -30,7 +26,7 @@ public class Menu {
 
             case "1":
 
-                ArrayList<String> listBookdetails = _biblioteca.getListBookDetails();
+                ArrayList<String> listBookdetails = biblioteca.getListBookDetails();
                 for(String detail:listBookdetails)
                 {
                     message += detail+"\n";
@@ -42,7 +38,7 @@ public class Menu {
 
                 String bookTitle = scanner.nextLine();
 
-                if ( _biblioteca.checkoutBook(bookTitle))
+                if ( biblioteca.checkoutBook(bookTitle))
                 {
                     message = Message.CHECKOUT_BOOK;
                 }
@@ -58,7 +54,7 @@ public class Menu {
             case "3":
 
                 bookTitle = scanner.nextLine();
-                if(_biblioteca.returnBook(bookTitle,"1"))
+                if(biblioteca.returnBook(bookTitle,"1"))
                 {
                     message = Message.SUCCESSFUL_RETURN;
                 }
@@ -87,7 +83,7 @@ public class Menu {
         return message;
     }
 
-    public void printMenu(){
+    private void printMenu(){
         System.out.println(MenuOptions);
     }
 

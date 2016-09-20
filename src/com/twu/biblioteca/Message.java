@@ -1,8 +1,5 @@
 package com.twu.biblioteca;
 
-/**
- * Created by crivera on 14/9/16.
- */
 public class Message {
 
     public static String WELCOME = "Welcome!\n";

@@ -1,128 +1,75 @@
 package com.twu.biblioteca;
+
 import java.util.ArrayList;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
-/**
- * Created by crivera on 13/9/16.
- */
 public class BibliotecaTest {
 
-    public Biblioteca biblioteca = new Biblioteca();
-    public BibliotecaApp bibliotecaApp = new BibliotecaApp();
+    private Biblioteca biblioteca;
+    private Menu menu;
 
-    @Test
-    public void printWelcomeMessage() {
-
-        String welcomeMessage = bibliotecaApp.welcomeMessage();
-        assertEquals(Message.WELCOME, welcomeMessage);
+    @Before
+    public void setUp() {
+        biblioteca = new Biblioteca();
+        menu = new Menu();
     }
 
     @Test
-    public void booklistTest() {
+    public void shouldReturnListOfAvailableBooks() {
+        ArrayList<Book> expectedBookList = new ArrayList<Book>() {{
+            add(new Book("Metamorfosis",1960 ,"Franz Kafka", false,"1"));
+            add(new Book("It",1987 ,"Stephen King", false, "1"));
+        }};
 
         ArrayList<Book> bookList = biblioteca.getListBook(false);
 
-        assertEquals(biblioteca.getListBook(false),bookList);
-    }
-
-@Test
-
-public void bookDetailsTest() {
-
-    Book book = new Book("It",1987,"Stephen King",false,"1");
-
-    String bookDetails = book.getBookDetails();
-
-    String whitespaceTitle = String.format("%-20s", "It");
-    String whitespaceAuthor = String.format("%-20s", "Stephen King");
-
-    String expected = String.format("%s | %s | %s\n",whitespaceTitle, whitespaceAuthor, 1987);
-
-    assertEquals(expected, bookDetails);
-}
-
-    @Test
-    public void returnMenuOptions() {
-
-        Menu menu = new Menu();
-
-        String menuOptions = menu.MenuOptions;
-
-        assertTrue(menuOptions,true);
-    }
-
-    @Test
-    public void wrongMessageMenuOptions() {
-
-        Menu menu = new Menu();
-
-        String wrongMessage = menu.menuOptions("33");
-
-        assertEquals(Message.INVALID_OPTION,wrongMessage);
-    }
-
-    @Ignore
-    public void exitMessageMenuOptions() {
-
-        Menu menu = new Menu();
-
-        String quitMessage = menu.menuOptions("0");
-        System.out.println(quitMessage);
-
-        assertEquals(Message.QUIT,quitMessage);
+        assertEquals(expectedBookList, bookList);
     }
 
     @Test
 
     public void booksAvailableCheckout() {
 
-        biblioteca.addBooks();
+        biblioteca.Biblioteca();
 
         ArrayList<Book> bookList = biblioteca.getListBook(false);
 
-        assertEquals(biblioteca.getListBook(false),bookList);
+        assertEquals(biblioteca.getListBook(false), bookList);
     }
 
     @Test
 
     public void booksCheckedOut() {
 
-        biblioteca.addBooks();
+        biblioteca.Biblioteca();
 
         ArrayList<Book> bookList = biblioteca.getListBook(true);
 
-        assertEquals(biblioteca.getListBook(true),bookList);
+        assertEquals(biblioteca.getListBook(true), bookList);
     }
 
-    @Test
-    public void printSuccessMessage() {
-
-        assertEquals("Thank you! Enjoy the book",Message.CHECKOUT_BOOK);
-    }
     @Test
     public void findAvailableBook() {
-        biblioteca.addBooks();
+        biblioteca.Biblioteca();
         int position = 0;
         String bookTitle = "It";
         ArrayList<Book> bookList = biblioteca.getListBook(false);
-        position = biblioteca.findBooksByTitle(bookTitle,bookList);
+        position = biblioteca.findBooksByTitle(bookTitle, bookList);
 
-        assertEquals(1,position);
-
-
+        assertEquals(1, position);
     }
 
     @Test
     public void checkOutBook() {
 
         String bookTitle = "It";
-        biblioteca.addBooks();
-
+        biblioteca.Biblioteca();
         boolean isCheckOut = biblioteca.checkoutBook(bookTitle);
-
         assertEquals(true, isCheckOut);
     }
 
@@ -130,7 +77,7 @@ public void bookDetailsTest() {
     public void notCheckOutBook() {
 
         String bookTitle = "hgh";
-        biblioteca.addBooks();
+        biblioteca.Biblioteca();
 
         boolean isNotCheckOut = biblioteca.checkoutBook(bookTitle);
 
@@ -142,9 +89,9 @@ public void bookDetailsTest() {
 
         String bookTitle = "Perfume";
         String libraryNumber = "1";
-        biblioteca.addBooks();
+        biblioteca.Biblioteca();
 
-        boolean isReturned = biblioteca.returnBook(bookTitle,libraryNumber);
+        boolean isReturned = biblioteca.returnBook(bookTitle, libraryNumber);
 
         assertEquals(true, isReturned);
 
@@ -155,18 +102,14 @@ public void bookDetailsTest() {
 
         String bookTitle = "Other book";
         String libraryNumber = "2";
-        biblioteca.addBooks();
+        biblioteca.Biblioteca();
 
-        boolean isNotReturned = biblioteca.returnBook(bookTitle,libraryNumber);
+        boolean isNotReturned = biblioteca.returnBook(bookTitle, libraryNumber);
 
         assertEquals(false, isNotReturned);
 
 
     }
-
-
-
-
 
 
 }

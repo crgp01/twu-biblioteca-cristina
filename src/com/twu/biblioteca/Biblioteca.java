@@ -1,30 +1,23 @@
 package com.twu.biblioteca;
 import java.util.ArrayList;
-
-
-/**
- * Created by crivera on 13/9/16.
- */
 public class Biblioteca {
 
-    private ArrayList<Book> _books = new ArrayList<Book>();
+    private ArrayList<Book> books = new ArrayList<Book>();
 
-    public void addBooks () {
-        _books = new ArrayList<Book>() {{
+    public void Biblioteca() {
+        books = new ArrayList<Book>() {{
             add(new Book("Metamorfosis",1960 ,"Franz Kafka", false,"1"));
             add(new Book("It",1987 ,"Stephen King", false, "1"));
             add(new Book("Perfume",1960 ,"Varios", true, "1"));
-
         }};
     }
 
     public ArrayList<Book> getListBook(boolean condition) {
        ArrayList<Book> bookList = new ArrayList<Book>();
 
-        for (Book book : _books) {
+        for (Book book : books) {
             if (book.isCheckedOut() == condition) {
                 bookList.add(book);
-
             }
         }
         return bookList;
@@ -32,13 +25,13 @@ public class Biblioteca {
 
 
     public ArrayList<String> getListBookDetails() {
-        ArrayList<String> booksDetails = new ArrayList<String>();
+        ArrayList<String> booksDetails = new ArrayList<>();
 
         ArrayList<Book> availableBook = getListBook(false);
 
         for (Book book : availableBook)
         {
-            booksDetails.add(book.getBookDetails());
+            booksDetails.add(book.toString());
         }
 
         return booksDetails;

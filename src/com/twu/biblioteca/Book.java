@@ -1,8 +1,4 @@
 package com.twu.biblioteca;
-
-/**
- * Created by crivera on 13/9/16.
- */
 public class Book {
 
     private String title;
@@ -38,7 +34,7 @@ public class Book {
         this.libraryNumber = libraryNumber;
     }
 
-    public String getBookDetails() {
+    public String toString() {
         String whitespaceTitle = String.format("%-20s", title);
         String whitespaceAuthor = String.format("%-20s", author);
 
